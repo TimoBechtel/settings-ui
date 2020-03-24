@@ -1,0 +1,45 @@
+{
+  "name": "settings-ui",
+  "version": "0.0.1",
+  "description": "Easily generate web forms from json with data binding.",
+  "source": "src/SettingsUI.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "unpkg": "dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "prepare": "npm run build",
+    "dev": "microbundle watch",
+    "lint": "eslint src",
+    "test": "npm run lint"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimoBechtel/settings-ui.git"
+  },
+  "keywords": [
+    "javascript",
+    "url",
+    "encoder",
+    "decoder",
+    "json"
+  ],
+  "author": "Timo Bechtel <timo@bechtel.solutions>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimoBechtel/settings-ui/issues"
+  },
+  "homepage": "https://github.com/TimoBechtel/settings-ui#readme",
+  "devDependencies": {
+    "@qiwi/semantic-release-gh-pages-plugin": "^1.15.9",
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "eslint": "^6.8.0",
+    "microbundle": "^0.11.0",
+    "semantic-release": "^17.0.4"
+  }
+}
