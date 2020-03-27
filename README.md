@@ -12,7 +12,7 @@
     Easily generate web forms from a JSON template with data binding.
     <br />
     <br />
-    <a href="https://github.com/TimoBechtel/settings-ui/blob/master/example">View Example</a>
+    <a href="https://timobechtel.github.io/settings-ui/">View Demo</a>
     ·
     <a href="https://github.com/TimoBechtel/settings-ui/issues">Report Bug</a>
     ·
