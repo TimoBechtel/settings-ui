@@ -56,7 +56,7 @@ npm install settings-ui
 
 ### CSS
 
-Settings-UI comes with a some basic styling. Not required, but you could install it like so:
+Settings-UI comes with some basic styling. Not required, but you could install it like so:
 
 #### Using a bundler
 
@@ -109,7 +109,7 @@ store.render().to(document.body);
 
 #### `bind`: function
 
-Creates the ui from template and bind it's values to a store array. Returns a `store` object.
+Creates the ui from template and bind it's values to a store object. Returns a `store` object.
 
 ##### Parameters
 
@@ -151,7 +151,7 @@ console.log(store.section.speed); // => 23
 
 ##### `template`: array
 
-Schema, that describes the settings schema. Used to generate the ui.
+Schema, that describes the settings data. Used to generate the UI.
 
 Every object in the array defines one property in the settings store object.
 
