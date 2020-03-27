@@ -1,5 +1,6 @@
 import { cast } from './utils.js';
 import coreTypeHandler from './coreTypeHandler.js';
+import './main.scss';
 
 const bindElements = (
   template,
