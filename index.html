@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/index.css" />
+    <title>Test Page</title>
+  </head>
+  <body>
+    <style>
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    </style>
+    <main>
+      <div id="settings-ui"></div>
+      <h1>Data</h1>
+      <p id="output"></p>
+    </main>
+    <script type="module">
+      import SettingsUI from './dist/index.mjs';
+      import example from './example.js';
+
+      const print = (store, out) => (out.innerHTML = JSON.stringify(store));
+
+      const store = {};
+
+      const ui = SettingsUI({
+        plugins: [(value, update) => {}],
+      });
+      ui.bind(example, store);
+      ui.render().to(document.getElementById('settings-ui'));
+
+      const out = document.getElementById('output');
+      ui.addChangeListener(() => print(store, out));
+      print(store, out);
+    </script>
+  </body>
+</html>
