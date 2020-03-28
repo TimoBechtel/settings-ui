@@ -3,7 +3,7 @@ export const section = ({ id, name }) => {
   const e = elementCreator('b');
   e.innerHTML = name || id;
   return {
-    elements: [e],
+    htmlElements: [e],
     superType: true,
   };
 };
