@@ -38,7 +38,6 @@
   },
   "homepage": "https://github.com/TimoBechtel/settings-ui#readme",
   "devDependencies": {
-    "@qiwi/semantic-release-gh-pages-plugin": "^1.15.9",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "eslint": "^6.8.0",

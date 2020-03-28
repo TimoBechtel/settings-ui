@@ -1,6 +1,9 @@
 name: Release
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   release:
@@ -24,3 +27,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
+      - name: GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.5.6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./example

@@ -5,13 +5,6 @@
     "@semantic-release/changelog",
     "@semantic-release/npm",
     "@semantic-release/git",
-    "@semantic-release/github",
-    [
-      "@qiwi/semantic-release-gh-pages-plugin",
-      {
-        "src": "example",
-        "branch": "gh-pages"
-      }
-    ]
+    "@semantic-release/github"
   ]
 }
