@@ -72,3 +72,38 @@ export const selection = ({ id, name, help, values, defaultValue }, update) => {
 
   return { htmlElements };
 };
+
+export const slider = (
+  { id, name, help, defaultValue, min, max, steps },
+  update
+) => {
+  const htmlElements = [];
+  const elementCreator = type => document.createElement(type);
+
+  const input = elementCreator('input');
+  input.type = 'range';
+  input.id = id;
+  input.min = min || 0;
+  if (max || max === 0) input.max = max;
+  if (steps) input.step = steps;
+
+  input.placeholder = help || defaultValue || '';
+  if (defaultValue || defaultValue === 0) input.value = defaultValue;
+
+  const label = elementCreator('label');
+  label.innerHTML = name || id;
+  label.htmlFor = id;
+
+  const output = elementCreator('output');
+  output.innerHTML = input.value;
+
+  input.addEventListener('input', e => {
+    output.innerHTML = e.target.value;
+    update(e.target.value);
+  });
+
+  htmlElements.push(label);
+  htmlElements.push(input);
+  htmlElements.push(output);
+  return { htmlElements };
+};
