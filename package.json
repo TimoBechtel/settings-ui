@@ -38,13 +38,13 @@
   },
   "homepage": "https://github.com/TimoBechtel/settings-ui#readme",
   "devDependencies": {
-    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "eslint": "^6.8.0",
-    "microbundle": "^0.11.0",
     "node-sass": "^4.13.1",
     "npm-run-all": "^4.1.5",
     "semantic-release": "^17.0.4",
-    "serve": "^11.3.0"
+    "serve": "^11.3.0",
+    "microbundle": "^0.12.0-next.8"
   }
 }
