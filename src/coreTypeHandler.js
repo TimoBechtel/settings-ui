@@ -2,6 +2,9 @@ import { section, selection, input, slider } from './coreComponents.js';
 
 export default [
   (value, update) => {
+    if (value.inputType === 'input') return input(value, update);
+  },
+  (value, update) => {
     if (value.type === 'section') {
       return section(value, update);
     }
