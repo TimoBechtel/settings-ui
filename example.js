@@ -15,13 +15,20 @@ const example = [
     },
   },
   {
+    id: 'isItOrIsItNot',
+    name: 'Is it or is it not?',
+    help: 'Decide!',
+    type: 'boolean',
+    defaultValue: true,
+  },
+  {
     id: 'luckyNumber',
     name: 'Lucky number',
     help: 'Choose your lucky number',
     description: '',
     type: 'number',
     defaultValue: 7,
-    values: [1, 3, 7, 13],
+    values: [1, 3, 7, 13, 42, 103, 9],
   },
   {
     id: 'namedNumber',
