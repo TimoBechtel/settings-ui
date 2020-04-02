@@ -107,3 +107,25 @@ export const slider = (
   htmlElements.push(output);
   return { htmlElements };
 };
+
+export const checkbox = ({ id, name, help, defaultValue }, update) => {
+  const htmlElements = [];
+  const elementCreator = type => document.createElement(type);
+
+  const input = elementCreator('input');
+  input.type = 'checkbox';
+  input.id = id;
+  input.title = help || '';
+  if (typeof defaultValue === 'boolean') input.checked = defaultValue;
+
+  input.addEventListener('input', e => update(e.target.checked));
+
+  const label = elementCreator('label');
+  label.innerHTML = name || id;
+  label.htmlFor = id;
+
+  htmlElements.push(input);
+  htmlElements.push(label);
+
+  return { htmlElements };
+};

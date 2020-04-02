@@ -14,7 +14,7 @@ const bindElements = (
     for (const handle of typeHandler) {
       const wrapper = handle(templateComponent, newValue => {
         newValue = cast(newValue, type);
-        if (newValue !== 0 && !newValue) {
+        if (newValue !== 0 && newValue !== false && !newValue) {
           newValue = defaultValue || null;
         }
 

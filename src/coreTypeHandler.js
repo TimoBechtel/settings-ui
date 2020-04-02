@@ -1,4 +1,10 @@
-import { section, selection, input, slider } from './coreComponents.js';
+import {
+  section,
+  selection,
+  input,
+  slider,
+  checkbox,
+} from './coreComponents.js';
 
 export default [
   (value, update) => {
@@ -8,6 +14,9 @@ export default [
     if (value.type === 'section') {
       return section(value, update);
     }
+  },
+  (value, update) => {
+    if (value.type === 'boolean') return checkbox(value, update);
   },
   (value, update) => {
     if (value.values) {
