@@ -19,12 +19,12 @@ export const input = (
   input.type = type;
   input.id = id;
   if (type === 'number') {
-    input.min = min || 0;
-    if (max || max === 0) input.max = max;
-    if (steps) input.step = steps;
+    if (typeof min === 'number') input.min = min;
+    if (typeof max === 'number') input.max = max;
+    if (typeof steps === 'number') input.steps = steps;
   } else {
-    input.minLength = min || 0;
-    if (max) input.maxLength = max;
+    if (typeof min === 'number') input.minLength = min;
+    if (typeof max === 'number') input.maxLength = max;
   }
   input.placeholder = help || defaultValue || '';
   if (defaultValue || defaultValue === 0) input.value = defaultValue;
