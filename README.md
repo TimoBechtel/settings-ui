@@ -157,83 +157,26 @@ Every object in the array defines one property in the settings store object.
 
 ##### Properties
 
-| Name               |   Type   |                                                                                                                                                                                         Description |
-| ------------------ | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| id                 |  string  |                                                                                                                              **Required** Used as property names for the store and for ids in HTML. |
-| name               |  string  |                                                                                                                                                          Short description. Used mainly for labels. |
-| help               |  string  |                                                                                                                                                          Help text. Used for titles or placeholders |
-| type               |  string  | Defines value type. Core components accept: default HTML input types (like: 'number', 'text') as well as 'section'. These also define that type of element is generated. (currently only `<input>`) |
-| description        |  string  |                                                                                                                                                              Currently not used by core components. |
-| name               |  string  |                                                                                                                                                          Short description. Used mainly for labels. |
-| min                |  number  |                                                                                                                             For number: lowest possible number, for text: minimal character length. |
-| max                |  number  |                                                                                                                                For number: highest possible number, for text: max character length. |
-| steps              |  number  |                                                                                                                                                              Available steps for inputting numbers. |
-| inputType          |  string  |                                                                                                                              Currently not in used. Planned for forcing specific html element type. |
-| defaultValue       |  string  |                                                                                                Value that is used when no value has been set. E.g. when clearing an input field, this value is set. |
-| values             |  array   |              Defines a set of possible values. Generates a HTML `<select>` element. Each value can be a direct value or an object with a `name` and `value` property. e.g.`{name: 'one', value: 1}` |
-| options            |  array   |                                                                                                                                             For `type = "section"`: Defines subtypes for a section. |
-| onUpdate(newValue) | function |                                                                                                         Function that is called whenever the value changes. Called with the new value as parameter. |
+| Name               |   Type   |                                                                                                                                                                                                       Description |
+| ------------------ | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| id                 |  string  |                                                                                                                                            **Required** Used as property names for the store and for ids in HTML. |
+| name               |  string  |                                                                                                                                                                        Short description. Used mainly for labels. |
+| help               |  string  |                                                                                                                                                                        Help text. Used for titles or placeholders |
+| type               |  string  |                                            Defines value type. Values can be `number`, `text`, `boolean`, `section`. Falls back to default HTML input types. These also define that type of element is generated. |
+| description        |  string  |                                                                                                                                                                            Currently not used by core components. |
+| name               |  string  |                                                                                                                                                                        Short description. Used mainly for labels. |
+| min                |  number  |                                                                                                                                           For number: lowest possible number, for text: minimal character length. |
+| max                |  number  |                                                                                                                                              For number: highest possible number, for text: max character length. |
+| steps              |  number  |                                                                                                                                                                            Available steps for inputting numbers. |
+| inputType          |  string  |                                                                                                                                                          Forces specific elements: `input`, `radio`, `selection`. |
+| defaultValue       |  string  |                                                                                                              Value that is used when no value has been set. E.g. when clearing an input field, this value is set. |
+| values             |  array   | Defines a set of possible values. Generates a HTML `<select>` or `<input type="radio/>"` element. Each value can be a direct value or an object with a `name` and `value` property. e.g.`{name: 'one', value: 1}` |
+| options            |  array   |                                                                                                                                                           For `type = "section"`: Defines subtypes for a section. |
+| onUpdate(newValue) | function |                                                                                                                       Function that is called whenever the value changes. Called with the new value as parameter. |
 
 ##### Example
 
-```javascript
-const template = const example = [
-  {
-    id: 'ballCount',
-    name: 'Ball count',
-    help: 'Input number of balls',
-    type: 'number',
-    min: 0,
-    max: 10,
-    steps: 0.5,
-    defaultValue: 2,
-    onUpdate(newValue) {
-      console.log(newValue);
-    },
-  },
-  {
-    id: 'luckyNumber',
-    name: 'Lucky number',
-    help: 'Choose your lucky number',
-    type: 'number',
-    values: [1, 3, 7, 13],
-  },
-  {
-    id: 'namedNumber',
-    name: 'Named number selection',
-    help: 'Choose a number',
-    type: 'number',
-    defaultValue: 1,
-    values: [
-      { name: 'one', value: 1 },
-      { name: 'three', value: 3 },
-    ],
-  },
-  {
-    id: 'advanced',
-    name: 'Advanced',
-    type: 'section',
-    options: [
-      {
-        id: 'heading',
-        name: 'Title',
-        type: 'text',
-        defaultValue: 'someText',
-        min: 0,
-        max: 10,
-      },
-      {
-        id: 'speed',
-        name: 'Speed',
-        type: 'number',
-        min: 0.1,
-        max: 1,
-        steps: 0.1,
-      },
-    ],
-  },
-];
-```
+Have a look at the [example](https://github.com/TimoBechtel/settings-ui/blob/master/example/example.js) template file.
 
 #### `addChangeListener`: function
 
@@ -309,7 +252,7 @@ ui.render().get();
 
 ## Plugins
 
-Currently the Settings UI core can only handle a few basic types like input, selection and sections. You can however extend it to handle anything you throw at it.
+Currently the Settings UI core can only handle a few basic types like input, selection, radio, checkbox, range and sections. You can however extend it to handle anything you throw at it.
 
 Plugins can be registered when creating the SettingsUI Object:
 
@@ -380,8 +323,8 @@ const ui = SettingsUI({ plugins });
 
 ## Roadmap
 
-- dynamic lists: add function for handling lists with variable length
-- slider, radio, checkbox components
+- [ x ] slider, radio, checkbox components
+- [ ] dynamic lists: add function for handling lists with variable length
 
 ## Contributing
 
