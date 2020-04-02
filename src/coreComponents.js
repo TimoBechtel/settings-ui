@@ -129,3 +129,37 @@ export const checkbox = ({ id, name, help, defaultValue }, update) => {
 
   return { htmlElements };
 };
+
+export const radio = ({ id, values, defaultValue, help }, update) => {
+  const htmlElements = [];
+  const elementCreator = type => document.createElement(type);
+
+  values.forEach(v => {
+    const radio = elementCreator('input');
+    radio.type = 'radio';
+    radio.name = id;
+    radio.title = help || '';
+
+    const label = document.createElement('label');
+
+    if (typeof v === 'object') {
+      radio.value = v.value;
+      radio.id = `${id}_${v.value}`;
+      label.innerHTML = v.name;
+    } else {
+      radio.value = label.innerHTML = v;
+      radio.id = `${id}_${v}`;
+    }
+
+    if (defaultValue + '' === radio.value + '') radio.checked = true;
+
+    radio.addEventListener('click', e => update(e.target.value));
+
+    label.htmlFor = radio.id;
+
+    htmlElements.push(radio);
+    htmlElements.push(label);
+  });
+
+  return { htmlElements };
+};

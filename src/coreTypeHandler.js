@@ -4,6 +4,7 @@ import {
   input,
   slider,
   checkbox,
+  radio,
 } from './coreComponents.js';
 
 export default [
@@ -20,7 +21,10 @@ export default [
   },
   (value, update) => {
     if (value.values) {
-      return selection(value, update);
+      if (value.inputType === 'radio') return radio(value, update);
+      if (value.inputType === 'selection') return selection(value, update);
+      if (value.values.length < 5) return radio(value, update);
+      else return selection(value, update);
     }
   },
   (value, update) => {

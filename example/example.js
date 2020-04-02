@@ -28,7 +28,7 @@ const example = [
     description: '',
     type: 'number',
     defaultValue: 7,
-    values: [1, 3, 7, 13],
+    values: [1, 3, 7, 13, 42, 103, 9],
   },
   {
     id: 'namedNumber',
