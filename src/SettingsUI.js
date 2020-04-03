@@ -57,7 +57,7 @@ const SettingsUI = ({ plugins = [] } = {}) => {
         template,
         config,
         htmlElements,
-        [...coreTypeHandler, ...plugins],
+        [...plugins, ...coreTypeHandler],
         (id, newValue) => changeListener.forEach(l => l(id, newValue))
       );
       return config;
