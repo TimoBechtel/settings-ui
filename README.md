@@ -102,7 +102,7 @@ const ui = SettingsUI();
 // create ui and bind to a store object
 const store = ui.bind(template);
 // render ui
-store.render().to(document.body);
+ui.render().to(document.body);
 ```
 
 ### API
