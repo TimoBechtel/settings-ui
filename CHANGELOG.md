@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/TimoBechtel/settings-ui/compare/v1.1.0...v1.1.1) (2020-04-03)
+
+
+### Bug Fixes
+
+* **css:** add missing styling for output element ([053afab](https://github.com/TimoBechtel/settings-ui/commit/053afab7ebee3be347850994b80bb00353929cf0))
+* **plugins:** fix core components always overwriting plugins ([9ff4d26](https://github.com/TimoBechtel/settings-ui/commit/9ff4d26942310329ac4ee7fef6dca383aa157000))
+
 # [1.1.0](https://github.com/TimoBechtel/settings-ui/compare/v1.0.1...v1.1.0) (2020-04-02)
 
 
