@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/TimoBechtel/settings-ui/compare/v1.2.0...v1.3.0) (2020-04-04)
+
+
+### Features
+
+* add function to update html values from store ([6980048](https://github.com/TimoBechtel/settings-ui/commit/69800485a36dcfb7d34182566167ec97b4578a12))
+
 # [1.2.0](https://github.com/TimoBechtel/settings-ui/compare/v1.1.1...v1.2.0) (2020-04-04)
 
 
