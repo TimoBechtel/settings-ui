@@ -6,6 +6,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "unpkg": "dist/index.umd.js",
+  "types": "src/SettingsUI.d.ts",
   "scripts": {
     "build": "microbundle && npm run build:example",
     "build:dev": "microbundle watch -f es -o example/dist/index.mjs",
