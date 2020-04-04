@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/TimoBechtel/settings-ui/compare/v1.1.1...v1.2.0) (2020-04-04)
+
+
+### Features
+
+* add typescript types ([8c6cb98](https://github.com/TimoBechtel/settings-ui/commit/8c6cb986d71b063d28ce45fa2dc92714f22e0649))
+
 ## [1.1.1](https://github.com/TimoBechtel/settings-ui/compare/v1.1.0...v1.1.1) (2020-04-03)
 
 
