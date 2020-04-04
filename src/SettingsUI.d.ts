@@ -79,7 +79,7 @@ interface templateEntry {
 }
 
 interface settingsUI {
-  bind: (template: templateEntry[], config = {}) => config;
+  bind: (template: templateEntry[], store?: object) => object;
   /**
    * Adds a listener that is called every time a value was updated.
    */
@@ -91,7 +91,7 @@ interface settingsUI {
   /**
    * Renders the UI.
    */
-  render: (tag = 'div') => renderResult;
+  render: (tag?: string) => renderResult;
 }
 
 interface pluginResult {
@@ -114,4 +114,5 @@ interface settingsUIArguments {
   plugins: plugin[];
 }
 
-export = function (options: settingsUIArguments = {}): settingsUI {};
+declare function SettingsUI(options: settingsUIArguments): settingsUI;
+export = SettingsUI;
