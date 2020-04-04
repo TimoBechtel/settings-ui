@@ -26,7 +26,7 @@ const bindElements = (
       });
 
       if (wrapper) {
-        if (wrapper.superType) {
+        if (options) {
           htmlElements.push(...(wrapper.htmlElements || []));
           store[id] = {};
           bindElements(

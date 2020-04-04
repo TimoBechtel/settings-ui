@@ -279,12 +279,11 @@ Otherwise you can return an object that can have following properties:
 
 with
 
-#### Properties (all optional)
+#### Properties
 
-| Name         |  Type   |                                                                       Description |
-| ------------ | :-----: | --------------------------------------------------------------------------------: |
-| htmlElements |  array  |                                                Elements to render on the webpage. |
-| superType    | boolean | Defines if this entry has sub types defined with `options` (see template section) |
+| Name         | Type  |                        Description |
+| ------------ | :---: | ---------------------------------: |
+| htmlElements | array | Elements to render on the webpage. |
 
 ### Example
 

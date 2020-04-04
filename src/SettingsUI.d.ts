@@ -112,10 +112,6 @@ interface pluginResult {
    * HTML ELements to render
    */
   htmlElements?: HTMLElement[];
-  /**
-   * Defines, if this template entry has sub entries defined by templateEntry.options
-   */
-  superType?: boolean;
 }
 
 /**

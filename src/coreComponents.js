@@ -4,7 +4,6 @@ export const section = ({ id, name }) => {
   e.innerHTML = name || id;
   return {
     htmlElements: [e],
-    superType: true,
   };
 };
 
