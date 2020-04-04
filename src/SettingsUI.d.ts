@@ -20,7 +20,7 @@ interface renderResult {
 
 interface templateEntry {
   /**
-   * Required Used as property names for the store and for ids in HTML.
+   * Required. Used as property name for the store and for id in HTML.
    */
   id: string;
   /**
@@ -29,7 +29,7 @@ interface templateEntry {
   help?: string;
   /**
    * Defines value type.
-   * Falls back to default HTML input types. These also define that type of element is generated.
+   * Falls back to default HTML input types. These also define what type of element is generated.
    */
   type?: 'number' | 'text' | 'boolean' | 'selection' | string;
   /**
@@ -66,7 +66,7 @@ interface templateEntry {
    * Each value can be a direct value or an object with a name and value property.
    * @example [{name: 'one', value: 1}]
    */
-  values?: { name: string; value: any }[];
+  values?: { name: string; value: any }[] | any[];
   /**
    * For type = "section": Defines subtypes for a section.
    */
@@ -74,45 +74,64 @@ interface templateEntry {
   /**
    * Function that is called whenever the value changes.
    * Called with the new value as parameter.
+   * Can be used to change values before storing.
+   * @param newValue The new value
+   * @returns (optional) The new value to store
    */
-  onUpdate?: (newValue: any) => void;
+  onUpdate?: (newValue?: any) => any;
 }
 
 interface settingsUI {
+  /**
+   * Creates the ui from template and bind it's values to a store object.
+   * Returns a store object.
+   * @param template A template array
+   * @param store An object that stores the form data
+   * @returns An object that stores the form data, prefilled
+   */
   bind: (template: templateEntry[], store?: object) => object;
   /**
    * Adds a listener that is called every time a value was updated.
+   * @param listener Function that is to be called
    */
   addChangeListener: (listener: (id: string, value: any) => void) => void;
   /**
    * Removes a change listener.
+   * @param listener Listener to be removed
    */
   removeChangeListener: (listener: (id: string, value: any) => void) => void;
   /**
    * Renders the UI.
+   * @param [tag=div] Tag to render as.
    */
   render: (tag?: string) => renderResult;
 }
 
 interface pluginResult {
+  /**
+   * HTML ELements to render
+   */
   htmlElements?: HTMLElement[];
+  /**
+   * Defines, if this template entry has sub entries defined by templateEntry.options
+   */
   superType?: boolean;
 }
 
 /**
- * @param templateEntry A single entry from the template array.,
+ * @param templateEntry A single entry from the template array.
  * @param update A function that updates the form data.
  */
 interface plugin {
   (
-    templateEntry: templateEntry,
-    update: (value: string) => void
-  ): pluginResult | null | void;
+    templateEntry?: templateEntry,
+    update?: (value: string) => void
+  ): pluginResult | void;
 }
 
 interface settingsUIArguments {
-  plugins: plugin[];
+  plugins?: plugin[];
 }
 
-declare function SettingsUI(options: settingsUIArguments): settingsUI;
+declare function SettingsUI(options?: settingsUIArguments): settingsUI;
 export = SettingsUI;
