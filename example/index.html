@@ -35,6 +35,11 @@
       const out = document.getElementById('output');
       ui.addChangeListener(() => print(store, out));
       print(store, out);
+
+      setInterval(() => {
+        store.ballCount++;
+        ui.update('ballCount');
+      }, 1000);
     </script>
   </body>
 </html>

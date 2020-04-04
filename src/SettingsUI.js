@@ -2,6 +2,8 @@ import { cast } from './utils.js';
 import coreTypeHandler from './coreTypeHandler.js';
 import './main.scss';
 
+const componentUpdater = new Map();
+
 const bindElements = (
   template,
   store,
@@ -39,6 +41,10 @@ const bindElements = (
           return;
         }
 
+        if (typeof wrapper.onStoreUpdate === 'function') {
+          componentUpdater.set(id, wrapper.onStoreUpdate);
+        }
+
         store[id] = defaultValue || null;
 
         htmlElements.push(...(wrapper.htmlElements || []));
@@ -51,6 +57,7 @@ const bindElements = (
 const SettingsUI = ({ plugins = [] } = {}) => {
   const changeListener = [];
   const htmlElements = [];
+  let _store = null;
   return {
     bind(template, store = {}) {
       bindElements(
@@ -60,6 +67,7 @@ const SettingsUI = ({ plugins = [] } = {}) => {
         [...plugins, ...coreTypeHandler],
         (id, newValue) => changeListener.forEach(l => l(id, newValue))
       );
+      _store = store;
       return store;
     },
     addChangeListener(listener) {
@@ -85,6 +93,24 @@ const SettingsUI = ({ plugins = [] } = {}) => {
           return wrapper;
         },
       };
+    },
+    update(id) {
+      if (id) {
+        componentUpdater.get(id)(_store[id]);
+        changeListener.forEach(l => l(id, _store[id]));
+      } else {
+        const updatePartial = object => {
+          Object.entries(object).forEach(([key, value]) => {
+            if (value && typeof value === 'object') {
+              updatePartial(value);
+              return;
+            }
+            componentUpdater.get(key)(value);
+            changeListener.forEach(l => l(key, value));
+          });
+        };
+        updatePartial(_store);
+      }
     },
   };
 };

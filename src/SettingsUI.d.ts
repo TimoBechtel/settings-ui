@@ -105,6 +105,11 @@ interface settingsUI {
    * @param [tag=div] Tag to render as.
    */
   render: (tag?: string) => renderResult;
+  /**
+   * updates HTMLElements with values from store
+   * @param id if defined, only updates specific id
+   */
+  update: (id?: string) => void;
 }
 
 interface pluginResult {
@@ -112,6 +117,12 @@ interface pluginResult {
    * HTML ELements to render
    */
   htmlElements?: HTMLElement[];
+  /**
+   * Function that is called whenever the value in the store is updated.
+   * Triggered by the settingsUI.update function.
+   * This can be used to update HTMLELement values.
+   */
+  onStoreUpdate?: (value: any) => void;
 }
 
 /**
