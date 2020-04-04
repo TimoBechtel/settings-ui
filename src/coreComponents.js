@@ -118,6 +118,7 @@ export const slider = (
     htmlElements,
     onStoreUpdate(newValue) {
       input.value = newValue;
+      output.innerHTML = newValue;
     },
   };
 };
