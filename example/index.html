@@ -24,22 +24,26 @@
 
       const print = (store, out) => (out.innerHTML = JSON.stringify(store));
 
-      const store = {};
-
       const ui = SettingsUI({
         plugins: [(value, update) => {}],
       });
-      ui.bind(example, store);
+
+      // two way data binding
+      const store = new Proxy(ui.bind(example), {
+        set(obj, prop, value) {
+          ui.update(prop);
+          obj[prop] = value;
+          return true;
+        },
+      });
+
       ui.render().to(document.getElementById('settings-ui'));
 
       const out = document.getElementById('output');
       ui.addChangeListener(() => print(store, out));
       print(store, out);
 
-      setInterval(() => {
-        store.ballCount++;
-        ui.update('ballCount');
-      }, 1000);
+      setInterval(() => store.ballCount++, 1000);
     </script>
   </body>
 </html>
