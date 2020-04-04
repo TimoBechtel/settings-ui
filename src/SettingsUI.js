@@ -4,7 +4,7 @@ import './main.scss';
 
 const bindElements = (
   template,
-  config,
+  store,
   htmlElements,
   typeHandler,
   onValueUpdated
@@ -19,19 +19,19 @@ const bindElements = (
         }
 
         if (typeof onUpdate === 'function') {
-          const v = onUpdate(newValue, config[id]);
-          config[id] = v !== undefined ? v : newValue;
-        } else config[id] = newValue;
+          const v = onUpdate(newValue, store[id]);
+          store[id] = v !== undefined ? v : newValue;
+        } else store[id] = newValue;
         onValueUpdated(id, newValue);
       });
 
       if (wrapper) {
         if (wrapper.superType) {
           htmlElements.push(...(wrapper.htmlElements || []));
-          config[id] = {};
+          store[id] = {};
           bindElements(
             options,
-            config[id],
+            store[id],
             htmlElements,
             typeHandler,
             onValueUpdated
@@ -39,7 +39,7 @@ const bindElements = (
           return;
         }
 
-        config[id] = defaultValue || null;
+        store[id] = defaultValue || null;
 
         htmlElements.push(...(wrapper.htmlElements || []));
         break;
@@ -52,15 +52,15 @@ const SettingsUI = ({ plugins = [] } = {}) => {
   const changeListener = [];
   const htmlElements = [];
   return {
-    bind(template, config = {}) {
+    bind(template, store = {}) {
       bindElements(
         template,
-        config,
+        store,
         htmlElements,
         [...plugins, ...coreTypeHandler],
         (id, newValue) => changeListener.forEach(l => l(id, newValue))
       );
-      return config;
+      return store;
     },
     addChangeListener(listener) {
       changeListener.push(listener);
