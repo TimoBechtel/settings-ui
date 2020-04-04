@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/TimoBechtel/settings-ui/compare/v1.3.0...v1.3.1) (2020-04-04)
+
+
+### Bug Fixes
+
+* **coreComponents:** fix range field not updating output text ([b1a5c5a](https://github.com/TimoBechtel/settings-ui/commit/b1a5c5ac9f33efc56a7c8f42ad851bc51620a118))
+
 # [1.3.0](https://github.com/TimoBechtel/settings-ui/compare/v1.2.0...v1.3.0) (2020-04-04)
 
 
