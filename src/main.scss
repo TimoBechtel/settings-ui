@@ -1,6 +1,9 @@
 .settings-ui-wrapper {
-  padding: 0;
-  margin: 0;
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
   label,
   output {
     display: block;
@@ -9,7 +12,6 @@
   }
   input,
   select {
-    box-sizing: border-box;
     display: block;
     width: 100%;
     margin: 5px 0;
@@ -17,8 +19,15 @@
   }
   input[type='checkbox'],
   input[type='radio'] {
-    float: left;
-    margin-right: 5px;
+    display: inline-block;
     width: auto;
+    & + label {
+      display: inline-block;
+      width: auto;
+      margin: 0 5px;
+    }
+  }
+  b {
+    display: block;
   }
 }
