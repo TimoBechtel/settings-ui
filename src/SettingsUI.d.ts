@@ -141,4 +141,4 @@ interface settingsUIArguments {
 }
 
 declare function SettingsUI(options?: settingsUIArguments): settingsUI;
-export = SettingsUI;
+export default SettingsUI;
