@@ -1,3 +1,24 @@
+## [1.3.1](https://github.com/TimoBechtel/settings-ui/compare/v1.3.0...v1.3.1) (2020-04-04)
+
+
+### Bug Fixes
+
+* **coreComponents:** fix range field not updating output text ([b1a5c5a](https://github.com/TimoBechtel/settings-ui/commit/b1a5c5ac9f33efc56a7c8f42ad851bc51620a118))
+
+# [1.3.0](https://github.com/TimoBechtel/settings-ui/compare/v1.2.0...v1.3.0) (2020-04-04)
+
+
+### Features
+
+* add function to update html values from store ([6980048](https://github.com/TimoBechtel/settings-ui/commit/69800485a36dcfb7d34182566167ec97b4578a12))
+
+# [1.2.0](https://github.com/TimoBechtel/settings-ui/compare/v1.1.1...v1.2.0) (2020-04-04)
+
+
+### Features
+
+* add typescript types ([8c6cb98](https://github.com/TimoBechtel/settings-ui/commit/8c6cb986d71b063d28ce45fa2dc92714f22e0649))
+
 ## [1.1.1](https://github.com/TimoBechtel/settings-ui/compare/v1.1.0...v1.1.1) (2020-04-03)
 
 

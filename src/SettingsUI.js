@@ -2,9 +2,11 @@ import { cast } from './utils.js';
 import coreTypeHandler from './coreTypeHandler.js';
 import './main.scss';
 
+const componentUpdater = new Map();
+
 const bindElements = (
   template,
-  config,
+  store,
   htmlElements,
   typeHandler,
   onValueUpdated
@@ -19,19 +21,19 @@ const bindElements = (
         }
 
         if (typeof onUpdate === 'function') {
-          const v = onUpdate(newValue, config[id]);
-          config[id] = v !== undefined ? v : newValue;
-        } else config[id] = newValue;
+          const v = onUpdate(newValue, store[id]);
+          store[id] = v !== undefined ? v : newValue;
+        } else store[id] = newValue;
         onValueUpdated(id, newValue);
       });
 
       if (wrapper) {
-        if (wrapper.superType) {
+        if (options) {
           htmlElements.push(...(wrapper.htmlElements || []));
-          config[id] = {};
+          store[id] = {};
           bindElements(
             options,
-            config[id],
+            store[id],
             htmlElements,
             typeHandler,
             onValueUpdated
@@ -39,7 +41,11 @@ const bindElements = (
           return;
         }
 
-        config[id] = defaultValue || null;
+        if (typeof wrapper.onStoreUpdate === 'function') {
+          componentUpdater.set(id, wrapper.onStoreUpdate);
+        }
+
+        store[id] = defaultValue || null;
 
         htmlElements.push(...(wrapper.htmlElements || []));
         break;
@@ -51,16 +57,18 @@ const bindElements = (
 const SettingsUI = ({ plugins = [] } = {}) => {
   const changeListener = [];
   const htmlElements = [];
+  let _store = null;
   return {
-    bind(template, config = {}) {
+    bind(template, store = {}) {
       bindElements(
         template,
-        config,
+        store,
         htmlElements,
         [...plugins, ...coreTypeHandler],
         (id, newValue) => changeListener.forEach(l => l(id, newValue))
       );
-      return config;
+      _store = store;
+      return store;
     },
     addChangeListener(listener) {
       changeListener.push(listener);
@@ -85,6 +93,24 @@ const SettingsUI = ({ plugins = [] } = {}) => {
           return wrapper;
         },
       };
+    },
+    update(id) {
+      if (id) {
+        componentUpdater.get(id)(_store[id]);
+        changeListener.forEach(l => l(id, _store[id]));
+      } else {
+        const updatePartial = object => {
+          Object.entries(object).forEach(([key, value]) => {
+            if (value && typeof value === 'object') {
+              updatePartial(value);
+              return;
+            }
+            componentUpdater.get(key)(value);
+            changeListener.forEach(l => l(key, value));
+          });
+        };
+        updatePartial(_store);
+      }
     },
   };
 };

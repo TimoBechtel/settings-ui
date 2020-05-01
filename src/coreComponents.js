@@ -4,7 +4,6 @@ export const section = ({ id, name }) => {
   e.innerHTML = name || id;
   return {
     htmlElements: [e],
-    superType: true,
   };
 };
 
@@ -37,7 +36,12 @@ export const input = (
 
   htmlElements.push(label);
   htmlElements.push(input);
-  return { htmlElements };
+  return {
+    htmlElements,
+    onStoreUpdate(newValue) {
+      input.value = newValue;
+    },
+  };
 };
 
 export const selection = ({ id, name, help, values, defaultValue }, update) => {
@@ -70,7 +74,12 @@ export const selection = ({ id, name, help, values, defaultValue }, update) => {
   htmlElements.push(label);
   htmlElements.push(select);
 
-  return { htmlElements };
+  return {
+    htmlElements,
+    onStoreUpdate(newValue) {
+      select.value = newValue;
+    },
+  };
 };
 
 export const slider = (
@@ -105,7 +114,13 @@ export const slider = (
   htmlElements.push(label);
   htmlElements.push(input);
   htmlElements.push(output);
-  return { htmlElements };
+  return {
+    htmlElements,
+    onStoreUpdate(newValue) {
+      input.value = newValue;
+      output.innerHTML = newValue;
+    },
+  };
 };
 
 export const checkbox = ({ id, name, help, defaultValue }, update) => {
@@ -127,7 +142,12 @@ export const checkbox = ({ id, name, help, defaultValue }, update) => {
   htmlElements.push(input);
   htmlElements.push(label);
 
-  return { htmlElements };
+  return {
+    htmlElements,
+    onStoreUpdate(newValue) {
+      input.checked = !!newValue;
+    },
+  };
 };
 
 export const radio = ({ id, values, defaultValue, help }, update) => {
@@ -161,5 +181,19 @@ export const radio = ({ id, values, defaultValue, help }, update) => {
     htmlElements.push(label);
   });
 
-  return { htmlElements };
+  return {
+    htmlElements,
+    onStoreUpdate(newValue) {
+      const e = htmlElements.find(e => e.value === newValue + '');
+      if (e) {
+        e.checked = true;
+      } else {
+        htmlElements.forEach(e => {
+          if (e.tagName === 'INPUT') {
+            e.checked = false;
+          }
+        });
+      }
+    },
+  };
 };

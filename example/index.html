@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
     <link rel="stylesheet" href="./dist/index.css" />
-    <title>Test Page</title>
+    <title>Settings-UI - Demo</title>
   </head>
   <body>
     <style>
       main {
-        max-width: 600px;
+        max-width: 700px;
         margin: 0 auto;
       }
     </style>
+    <header>
+      <h1>Settings-UI</h1>
+      <p>Easily generate web forms with data binding using a JSON template</p>
+      <a href="https://github.com/TimoBechtel/settings-ui">Github</a>
+    </header>
     <main>
-      <div id="settings-ui"></div>
+      <form id="settings-ui"></form>
       <h1>Data</h1>
       <p id="output"></p>
     </main>
@@ -24,17 +30,26 @@
 
       const print = (store, out) => (out.innerHTML = JSON.stringify(store));
 
-      const store = {};
-
       const ui = SettingsUI({
         plugins: [(value, update) => {}],
       });
-      ui.bind(example, store);
+
+      // two way data binding
+      const store = new Proxy(ui.bind(example), {
+        set(obj, prop, value) {
+          ui.update(prop);
+          obj[prop] = value;
+          return true;
+        },
+      });
+
       ui.render().to(document.getElementById('settings-ui'));
 
       const out = document.getElementById('output');
       ui.addChangeListener(() => print(store, out));
       print(store, out);
+
+      setInterval(() => store.ballCount++, 1000);
     </script>
   </body>
 </html>

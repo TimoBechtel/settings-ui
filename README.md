@@ -250,6 +250,16 @@ Returns the generated element without appending it to the dom.
 ui.render().get();
 ```
 
+#### `update`: function
+
+Updates HTMLElements with values from store.
+
+##### Parameters
+
+| Name |  Type  |                                                  Description |
+| ---- | :----: | -----------------------------------------------------------: |
+| id   | string | (optional) If defined, only updates specific element with id |
+
 ## Plugins
 
 Currently the Settings UI core can only handle a few basic types like input, selection, radio, checkbox, range and sections. You can however extend it to handle anything you throw at it.
@@ -279,12 +289,12 @@ Otherwise you can return an object that can have following properties:
 
 with
 
-#### Properties (all optional)
+#### Properties
 
-| Name         |  Type   |                                                                       Description |
-| ------------ | :-----: | --------------------------------------------------------------------------------: |
-| htmlElements |  array  |                                                Elements to render on the webpage. |
-| superType    | boolean | Defines if this entry has sub types defined with `options` (see template section) |
+| Name          |   Type   |                                                                                 Description |
+| ------------- | :------: | ------------------------------------------------------------------------------------------: |
+| htmlElements  |  array   |                                                          Elements to render on the webpage. |
+| onStoreUpdate | function | Function that is called whenever the value in the store is updated. Receives the new value. |
 
 ### Example
 
@@ -323,7 +333,7 @@ const ui = SettingsUI({ plugins });
 
 ## Roadmap
 
-- [ x ] slider, radio, checkbox components
+- [x] slider, radio, checkbox components
 - [ ] dynamic lists: add function for handling lists with variable length
 
 ## Contributing
