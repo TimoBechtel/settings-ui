@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/TimoBechtel/settings-ui/compare/v1.3.1...v1.3.2) (2020-05-01)
+
+
+### Bug Fixes
+
+* **SettingsUI.d.ts:** allow import without esModuleInterop flag ([#2](https://github.com/TimoBechtel/settings-ui/issues/2)) ([d782179](https://github.com/TimoBechtel/settings-ui/commit/d782179c325659a02ebd48ac40a4a3ab213d5c77))
+
 ## [1.3.1](https://github.com/TimoBechtel/settings-ui/compare/v1.3.0...v1.3.1) (2020-04-04)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "settings-ui",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Easily generate web forms from json with data binding.",
   "source": "src/SettingsUI.js",
   "main": "dist/index.js",
