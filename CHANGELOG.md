@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/TimoBechtel/settings-ui/compare/v1.3.2...v1.3.3) (2020-06-22)
+
+
+### Bug Fixes
+
+* **readme:** fix links to reflect branch renaming ([3b65477](https://github.com/TimoBechtel/settings-ui/commit/3b6547700533feed9ce72a46ee00f56b8e6a0c8e))
+
 ## [1.3.2](https://github.com/TimoBechtel/settings-ui/compare/v1.3.1...v1.3.2) (2020-05-01)
 
 
