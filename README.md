@@ -176,7 +176,7 @@ Every object in the array defines one property in the settings store object.
 
 ##### Example
 
-Have a look at the [example](https://github.com/TimoBechtel/settings-ui/blob/master/example/example.js) template file.
+Have a look at the [example](https://github.com/TimoBechtel/settings-ui/blob/main/example/example.js) template file.
 
 #### `addChangeListener`: function
 
@@ -352,7 +352,7 @@ This project uses semantic-release for automated release versions. So commits in
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/TimoBechtel/settings-ui/blob/master/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/TimoBechtel/settings-ui/blob/main/LICENSE) for more information.
 
 ## Contact
 
@@ -370,4 +370,4 @@ Project Link: [https://github.com/TimoBechtel/settings-ui](https://github.com/Ti
 [issues-shield]: https://img.shields.io/github/issues/TimoBechtel/settings-ui?style=flat-square
 [issues-url]: https://github.com/TimoBechtel/settings-ui/issues
 [license-shield]: https://img.shields.io/github/license/TimoBechtel/settings-ui?style=flat-square
-[license-url]: https://github.com/TimoBechtel/settings-ui/blob/master/LICENSE
+[license-url]: https://github.com/TimoBechtel/settings-ui/blob/main/LICENSE
